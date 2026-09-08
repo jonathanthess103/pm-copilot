@@ -101,3 +101,5 @@ Rules: omit empty sections; never invent deadlines; captures name a source and l
 - Open proposals: `memory/state/morning-brief-open-proposals.md` - unanswered "possibly done / promote?" items, re-surfaced next run, expired after ~5 runs.
 - High-water marks: `memory/state/morning-brief-hwm.json` - advance only sources that succeeded.
 Create `memory/state/` if missing. All of Step 5 is silent housekeeping.
+
+<!-- loop test Tue Sep  8 09:42:43 PDT 2026 -->
