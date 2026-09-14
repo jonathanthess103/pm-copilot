@@ -37,6 +37,8 @@ Invoke `memory-keeper` in weekly-sweep mode: read `memory/context-watchlist.md`,
 ## PHASE 3 - Apply approved diffs
 Read every `open` entry in `memory/skill-improvements.md`, including any just proposed and approved this run. For each, propose a concrete diff to the target skill, task, or routing brain. Surface all diffs for bulk approve/reject. On approval, apply the change and flip the entry to `applied` (or `wontfix`), with a dated changelog line in the affected file.
 
+**Drafted scores are never final.** When a project, build or improvement is written into the user's own prioritization system with priority scores the co-pilot drafted rather than the user set, say so on the row and end the run by naming every row that still needs their review. Use whatever "reviewed by the user" flag that system carries; if it has none, propose adding one before writing. Never leave a co-pilot-drafted score sitting in the user's store indistinguishable from one they set themselves: the store then ranks on numbers they never agreed to, and the ranking looks like their judgement. Leaving the scores blank is not the alternative, because an unscored row sorts to the bottom and goes unseen.
+
 Also run the **weekly memory consolidation** step here if it is not scheduled separately: a reflective pass over the memory files to merge duplicates, retire stale entries, and fix the index. Propose the changes; write only on approval. (If the user set up the biweekly memory-refresh task, consolidation lives there instead; skip it here.)
 
 ## OUTPUT - walked through one part at a time
@@ -55,5 +57,8 @@ Improvement candidates (existing skills)
 
 Ready-to-apply diffs (from open friction-log entries)
 - [skill] - [one-line diff] - apply?
+
+Rows needing your score review (drafted by me, not yet yours)
+- [row] - [the scores I drafted] - correct them and tick the reviewed flag
 ```
 Wait for approval on each part, then apply approvals and update statuses. Nothing written or applied without explicit confirmation this run. If the morning brief keeps an auto-close audit log, read its reopen records and report the auto-close false-positive rate so the accepted fuzzy-match risk stays measured.
