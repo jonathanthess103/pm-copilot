@@ -45,13 +45,28 @@ Runs while the co-pilot reads a source (a meeting transcript, chat, email, a doc
 
 **Track B - new entities.** Pull candidate entities the co-pilot has no grounding for (terms, acronyms, milestones, dates, docs named but not linked, people not in `colleagues.md`). Dedup and drop anything already known. Score each: critical (a top priority, a VIP, recurs across 2+ sources, or sits next to a decision), routine (low signal), or noise (no memory home, drop). For each critical one, do one cheap grounding read, then resolve to either `understood` (propose a one-line memory save) or `needs-user` (ask a targeted question). Routine entities stay silent in the queue for the weekly sweep.
 
+**Track C - promote living sources to the watchlist.**
+A source enters `memory/context-watchlist.md` at three moments: when the user Ingests a gap, when Track A auto-reads a reachable artifact, and when a source is marked `drift`. Drift promotes automatically without asking, because a source that has already contradicted memory has proven both that it changes and that the change matters. The other two require the living-source test.
+
+1. **Living-source test.** Add only what is expected to change again: a shared or collaborative doc, a board or database, a standing agenda, a recurring page. Never add a one-shot artifact, which is finished the moment it is read: call transcripts, sent messages, signed documents, dated decks and exports.
+2. **Dedup** against existing watchlist rows by locator before appending.
+3. **Obtain a change key**, so that "material change" is a comparison and not a judgement: Drive `modifiedTime`, Notion `last_edited_time`, chat channel latest message timestamp, local file mtime or hash. **If no change key can be obtained, do not create the row.** Append it to `context-gaps.md` as `needs-link` instead. A watchlist row that cannot be checked is the failure this track exists to prevent.
+4. **Row shape:** source, locator, change key as last seen, last swept date, unchanged-sweep count, and one line on why it is tracked.
+5. **Retire** a row whose change key has not moved across four consecutive sweeps. Record the retirement in the row; never delete it, or the next pass will re-add it.
+
 **What reaches the user (daily):** a capped block of at most a few critical items, each a confirm ("learned X, save it?") or an answer ("X appeared in Y and isn't in memory, add as Z?"). If nothing is critical, stay invisible.
 
 ---
 
 ## Weekly-sweep mode (called by self-improvement)
 
-Read `memory/context-watchlist.md`, check each listed source for material change since it was last swept, append genuine routing-mapped gaps to `memory/context-gaps.md`, and advance the "last swept" marker only for sources that succeeded. Then hand the pending queue to the caller for triage (Ingest / Skip / Mute / Link). On Ingest, propose the diff and write only on approval.
+For each row in `memory/context-watchlist.md`, fetch its change key and compare it to the stored value.
+
+- **Moved:** append a row to `memory/context-gaps.md` with status `pending`, naming the source, the old and new change keys, and a one-line note on what appears to have changed. Update the watchlist row's stored key and reset its unchanged-sweep count to zero. Do not read the source in depth here; that is the Ingest step's job.
+- **Unchanged:** increment the unchanged-sweep count, and retire the row at four.
+- **Fetch failed:** leave the stored key and the last-swept date untouched, so a broken connector never reads as "no change", and note the failure.
+
+Advance the "last swept" marker only for rows that were actually checked. Then hand the pending queue to the caller for triage (Ingest / Skip / Mute / Link), drift first. On Ingest, propose the diff and write only on approval, and apply the Track C living-source test to decide whether the ingested source now belongs on the watchlist.
 
 ---
 
