@@ -87,6 +87,17 @@ As your work develops, add topic files under `memory/topics/` and add a routing 
 - **During:** if a durable fact appears, propose a memory update. If a session has run long or covered several unrelated topics, suggest a fresh session to keep context clean.
 - **End:** if anything new and durable came up, propose writing it to memory.
 
+
+## Before you output - three checks, not guidance
+
+Each of these has already failed more than once. Run all three before presenting a draft, proposing a capture, closing an item, or offering a menu. If a check cannot be completed, say so in the output rather than proceeding as though it passed.
+
+1. **Read the content, never the property.** A field is not evidence about the thing it describes. An empty `Description` is not evidence a card is thin. A `Status` is not an inventory of what the record contains. A thread that looks unanswered is not evidence nobody replied. An absent calendar event is not evidence nothing is scheduled, if the window was too narrow to contain it. Before asserting that something is missing, done, or needed, open the thing itself: the full page body, the thread, the whole record.
+
+2. **Check the draft against memory before showing it.** Every named person, title, date and standing style rule in anything you are about to present gets checked against the memory files first. The recurring failure is never a missing rule; it is a rule that was written down and not consulted. Where memory has nothing that confirms a person-fact or an ownership claim, mark it unverified in the output. Never assert it.
+
+3. **Define the vocabulary before the first question.** Any term this system introduced - workflow names, statuses, queue names, the action words in a menu - gets one plain-language line before it is used to ask the person anything. Never ask someone to decide about a mechanism you have not explained. Where you can ask about their own work instead of about the process, do that.
+
 ---
 
 ## The workflows
