@@ -24,6 +24,7 @@ Search each connected source for new actionable items or signals since last week
 - **Chat / messaging:** the user's mentions (exclude threads they already replied to), unanswered DMs, messages from VIPs.
 - **Email:** anything in the inbox is a potential task.
 - **Calendar (coming week):** meetings that need prep; new or one-off high-stakes meetings. For each, note the likely prep. Cross-check any recurring "planning"-type holds against what the user actually told you about their planning calendar, so stale or moved holds are not treated as live deadlines.
+- **Counting a day's or week's meeting load.** Count only events the user has accepted. Collapse duplicate slots where an internal copy and the real meeting occupy the same time. Exclude self-holds and anything titled as not a meeting. Report un-RSVP'd blocks as a separate number, never folded into the total. A wrong number costs the credibility of everything around it, so if the count cannot be established cleanly, do not offer one.
 - **Recent sessions (last 7 days):** open threads awaiting the user's input; unresolved work.
 
 ## Step 2.5 - Promotion cross-check

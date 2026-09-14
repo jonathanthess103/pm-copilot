@@ -27,6 +27,8 @@ Surface everything in this session. Never message the user on an external channe
 ## STEP 0 - Environment and high-water marks
 - Determine the previous working day using the user's work week and non-working days from `memory/day-to-day.md` (if yesterday was a non-working day, step back to the last working day). Use the user's timezone.
 - Read per-source high-water marks from `memory/state/morning-brief-hwm.json` (`{source: last-success-timestamp}`, default 48h if absent). Advance a source's mark only if it succeeded this run.
+- **Forward calendar window.** The high-water marks above look backward only, which makes anything scheduled beyond the window invisible. Also pull at least the next 30 days of calendar. Before surfacing any proposed capture that is a scheduling ask, check it against that forward window: an ask already sitting there as an accepted event is satisfied, not new.
+- **Counting a day's or week's meeting load.** Count only events the user has accepted. Collapse duplicate slots where an internal copy and the real meeting occupy the same time. Exclude self-holds and anything titled as not a meeting. Report un-RSVP'd blocks as a separate number, never folded into the total. A wrong number costs the credibility of everything around it, so if the count cannot be established cleanly, do not offer one.
 
 ## STEP 1 - Capture new items
 Pull new actionable items from each connected source since its high-water mark. Fault-isolate each; an unreachable source is reported and does not advance its clock.
