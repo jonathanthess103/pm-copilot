@@ -15,8 +15,18 @@ You are running the user's **self-improvement** pass, the weekly loop where the 
 
 Friction log: `memory/skill-improvements.md`. Entry format: `- YYYY-MM-DD | "<quote or diff summary>" | proposed change in one line | open`.
 
-## PHASE 1 - Draft-not-sent scan (voice-correction signals)
-Window: last 7 days. Scan in parallel, using the connected tools: recent session transcripts, chat sent by the user, email sent by the user, recent doc edits. For each draft the co-pilot produced (a message, email, doc section, ticket comment; ignore code and scaffolds), find what actually landed and classify: NEVER SENT (no match); SENT MATCHING (high overlap, skip); SENT DIVERGED (partial overlap, same intent, different wording, a voice-correction signal). For each diverged draft, propose a friction-log entry under the relevant skill heading (or under a voice/routing heading for the routing brain). Propose the diff; do not auto-write. If transcripts are unavailable, degrade to sent-only mode and say so.
+## PHASE 1 - Draft-vs-sent scan (voice-correction signals)
+Two inputs, then one dedup gate. Do not skip 1B because 1A found something.
+
+**1A. Auto-scan.** Window: last 7 days. Scan in parallel, using the connected tools: recent session transcripts, chat sent by the user, email sent by the user, recent doc edits. For each draft the co-pilot produced (a message, email, doc section, ticket comment; ignore code and scaffolds), find what actually landed and classify: NEVER SENT (no match); SENT MATCHING (high overlap, skip); SENT DIVERGED (partial overlap, same intent, different wording, a voice-correction signal). If transcripts are unavailable, degrade to sent-only mode and say so.
+
+**1B. Voice queue.** Read the queue file at the location named under "Voice queue" in `memory/day-to-day.md`. If no location is named there, skip 1B and say so. Take every row in its **Pending** section, whatever its age: the user flagged these by hand precisely because they edited the draft before sending, so they are pre-classified SENT DIVERGED and they do not expire out of the 7-day window.
+
+**Dedup gate.** Key every candidate from both inputs on a stable artifact id (email thread id, chat channel plus message timestamp, file path). Drop any candidate whose key already appears in the queue file's **Reviewed** section. This is what stops an artifact reviewed in an earlier run coming back while the window still covers it.
+
+For each surviving diverged draft, diff it line by line against what was sent and extract concrete edit patterns (word choice, structure, cuts), not generic notes. Separate the user's style from the co-pilot's own mistakes: durable style goes to the voice file, while a rule or fact that already existed in memory and was not applied goes to the friction log under a voice heading. Propose everything; do not auto-write.
+
+**Close the loop.** Once the user has decided on an item, move its row from **Pending** to **Reviewed** in the queue file, with the date reviewed and where its output landed. Never delete a Reviewed row; that list is the dedup key. Add a Reviewed row for any 1A item the user reviewed as well, so it cannot resurface.
 
 ## PHASE 2 - Skill-spotter scan (new and improved skill candidates)
 Scan the last 7 days across the connected tools for: (A) new skill candidates, repeatable workflows the user did 2+ times, asked for repeatedly, or that took multiple manual steps; (B) improvement candidates, friction with existing skills or tasks (corrections, redos, "why does it keep" moments). For each: name, where spotted, what it does today, the opportunity. Write (B) as proposed friction-log entries (propose-only). Frame as opportunity. Three sharp candidates beat seven vague ones.
