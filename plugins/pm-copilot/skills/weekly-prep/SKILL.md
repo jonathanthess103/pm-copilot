@@ -14,7 +14,7 @@ You are the user's co-pilot running **Weekly Prep**. Read `memory/role.md`, `mem
 
 ## Step 0 - Board hygiene pre-pass
 - Auto-archive: any This Week item marked done moves to Backlog/Archive.
-- Stale scan: collect Inbox and Backlog items with no edits in 6+ weeks. Surface them in the This Week stage under a "stale items, confirm bulk drop?" prompt. No auto-delete.
+- Stale scan: collect Inbox and Backlog items with no edits in 6+ weeks. Surface them in Step 4 the guided review stage under a "stale items, confirm bulk drop?" prompt. No auto-delete.
 
 ## Step 1 - Load current state
 Fetch the board. Get This Week (what's there, done, stale), Inbox (what's accumulated, anything urgent), Backlog (anything to move up), and the standing initiatives (their status and linked tasks).
@@ -32,19 +32,19 @@ Before proposing to promote any Inbox item to This Week, verify it is actually s
 
 Granularity filter: promote only chunky, recognizable units of work. Do not promote small or granular items (single-message replies, one-off acknowledgements, sub-step reminders, things answerable in a couple minutes). Granular items stay in Inbox or go to the stale/bulk-drop list. When unsure, leave it in Inbox and mention it.
 
-## Step 2.6 - Tiered meeting prep (compute now, present in Stage 5)
+## Step 2.6 - Tiered meeting prep (compute now, present in the guided review within step 4)
 Read `memory/meeting-prep-recurring.md` for known tier assignments. For each coming-week meeting that needs prep, assign one tier:
-- **Tier 1 - Heavy (board task):** the most consequential meetings only (manager/skip 1:1s with a real agenda, exec readouts the user is presenting, decisional cross-functional meetings they're organizing, kickoffs they're running). Propose-only: surface candidates and wait for confirmation before creating a "Prep for [meeting]" task. For manager/skip 1:1s, the task body carries recent threads with them, open asks, and a one-line status per stated priority.
+- **Tier 1 - Heavy (board task):** the most consequential meetings only (manager/skip 1:1s with a real agenda, exec readouts the user is presenting, decisional cross-functional meetings they're organizing, kickoffs they're running). Propose-only: surface candidates here, then wait for confirmation in Step 4's guided review before creating a "Prep for [meeting]" task — do not create the task in this step. For manager/skip 1:1s, the task body carries recent threads with them, open asks, and a one-line status per stated priority.
 - **Tier 2 - Medium (day-before reminder):** recurring cross-functional or team syncs. Flag so the next morning brief reminds the user; note a point or two. No task.
 - **Tier 3 - Light (skip):** routine, low-stakes. No task, no reminder.
 
-Classify by meeting NATURE, not calendar proximity. A kickoff the user is organizing with a large cross-functional invite is Tier 1 even if it's the same day; proximity never downgrades a consequential meeting and distance never upgrades a routine one. For any new recurring meeting not in the config, propose its tier and save it only after the user confirms.
+Classify by meeting NATURE, not calendar proximity. A kickoff the user is organizing with a large cross-functional invite is Tier 1 even if it's the same day; proximity never downgrades a consequential meeting and distance never upgrades a routine one. For any new recurring meeting not in the config, propose its tier here, then save it only after the user confirms in Step 4's guided review — do not save the tier assignment in this step.
 
 ## Step 2.7 - Standing initiatives refresh (compute now, present in Stage 2)
 Look at This Week and Inbox activity and identify which 2 to 4 initiatives have the most or most urgent activity this week. Prefer initiatives that already exist; only propose a brand-new one if a genuinely new standing initiative has emerged. Plan to mark the top ~3 active and the rest dormant (apply at the end). Draft a fresh one-line "why now" per active initiative, grounded in this week's signal. Link any new This Week task that clearly belongs to an initiative.
 
 ## Step 3 - Prepare the guided review (do not dump everything at once)
-After gathering everything, do NOT write a single long proposal. Run a GUIDED REVIEW: walk the user through the week ONE SECTION AT A TIME, each its own short turn built around an AskUserQuestion form. This is a hard requirement.
+After gathering everything, do NOT write a single long proposal. Prepare a GUIDED REVIEW by reading this step's notes to be run within Step 4: walk the user through the week ONE SECTION AT A TIME, each its own short turn built around an AskUserQuestion form. This is a hard requirement.
 
 Global rules for every stage:
 - Lead with the decision. No process narration, no recap of how you gathered the data.
