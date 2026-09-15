@@ -3,7 +3,15 @@ name: morning-brief
 description: Your daily capture-and-close pass. Pulls new action items from your connected tools, cleans your task inbox, checks whether open items are done, and preps or recaps today's meetings. Presented one part at a time for you to decide on. Run it in a new chat whenever you want.
 ---
 
-## GUIDED DELIVERY - one part at a time (always)
+## INVOCATION CONTEXT (check first, every run)
+Before anything else, check whether the prompt that invoked this skill explicitly states this is a scheduled/unattended run (no user present to answer). Look for that statement actively - do not proceed on an assumption either way.
+
+- **Scheduled / unattended** (the invoking prompt says so explicitly): follow the "scheduled/unattended" branch called out inline at STEP 4 and STEP 4b below. Nothing outside those two steps changes.
+- **Interactive** (everything else - no such statement found, so a person is presumed present in this chat): follow GUIDED DELIVERY below, and every step, exactly as written.
+
+Hard rule: once you've determined this is a scheduled/unattended run, never call AskUserQuestion and never pause waiting for a reply in this session - regardless of anything elsewhere in this skill that says to pause "always."
+
+## GUIDED DELIVERY - one part at a time (interactive runs; see Invocation Context)
 Do not dump the whole brief in one message. Present it part by part in the Step 4 order, each part its own short turn led by one plain intro line. Pause and wait for the user on every part that needs a decision (missing context, things you can handle, cleanup, suggestions, meetings) before moving on. Purely informational parts with nothing to decide can be shown together. Keep each part short.
 
 ## FORMATTING - lists, never paragraphs (always)
@@ -64,10 +72,10 @@ For every open task in Inbox and This Week, including ones captured this run:
 Look at today's calendar. For each meeting that isn't routine-skip, present it and let the user choose per meeting:
 - **Prep:** a short prep block plus a draft agenda (recent threads with attendees, open asks, one-line status per relevant priority).
 - **Recap:** schedule a one-shot follow-up (fires ~30 min after the meeting ends) that produces a summary and, if the user wants, a draft message to the relevant place.
-Default manager and skip-level 1:1s to prep. Do not act until the user picks.
+Default manager and skip-level 1:1s to prep. Do not act until the user picks. On a scheduled/unattended run (see Invocation Context), there is no pick to wait for: do not prep or recap anything here, just list each qualifying meeting under STEP 4b section 6 as an open prep/recap decision for the user's next interactive session.
 
 ## STEP 4b - The brief (chronological: past, what came in, act, clean up, future)
-Show these sections in order, each only if it has content. Terse lines, no process narration. If the whole run is empty: `Morning Brief - [today]: nothing new.` Present as separate parts per the guided-delivery rule, pausing on decision parts.
+Show these sections in order, each only if it has content. Terse lines, no process narration. If the whole run is empty: `Morning Brief - [today]: nothing new.` On an interactive run, present as separate parts per the guided-delivery rule, pausing on decision parts. On a scheduled/unattended run (see Invocation Context), render the whole brief below as a single message with no pausing between sections.
 
 ```
 Morning Brief - [today]
@@ -100,7 +108,7 @@ captured N · handled N · closed N · archived M
 6) MEETINGS TODAY - prep or recap?
 - <meeting> (<time>) - prep / recap?
 ```
-Rules: omit empty sections; never invent deadlines; captures name a source and link; cleanup unifies detected-closed plus items you handled this run plus the archived count, each with evidence; "Suggested for This Week" proposes only chunky items, never micro; nothing is promoted, acted, prepped, or recapped without the user's pick.
+Rules: omit empty sections; never invent deadlines; captures name a source and link; cleanup unifies detected-closed plus items you handled this run plus the archived count, each with evidence; "Suggested for This Week" proposes only chunky items, never micro; nothing is promoted, acted, prepped, or recapped without the user's pick. On a scheduled/unattended run, no section gets a pick this run either - sections 1.5, 3, 4, and 6 all render as open questions the user answers next time they open this session or run the skill interactively.
 
 ## STEP 5 - Durable state (silent; never shown in the brief)
 - Audit log: `memory/state/morning-brief-audit.md` - every auto-close/archive/dedup with item ID and evidence.
