@@ -7,9 +7,19 @@
 set -euo pipefail
 
 # Find the workspace: the current working directory if it has a memory/ folder,
-# else the root named by PM_COPILOT_HOME. This matters because the user's deal
-# work happens in sibling directories (Drive mounts, Downloads, other repos),
-# not inside the workspace itself, so sessions are rarely opened there.
+# else PM_COPILOT_HOME if set, else the conventional default location. This
+# matters because the user's deal work happens in sibling directories (Drive
+# mounts, Downloads, other repos), not inside the workspace itself, so sessions
+# are rarely opened there.
+#
+# Env vars are NOT a reliable fallback on their own: Claude Code sessions do
+# not consistently source ~/.zshrc or other shell profiles, so a var set only
+# there may never reach the process this hook runs in. PM_COPILOT_HOME is kept
+# as an optional override (for anyone using a non-default location, sourced
+# from wherever they've made it visible to this process), but the default
+# below does not depend on it.
+DEFAULT_WORKSPACE="${HOME}/pm-copilot-workspace"
+
 resolve_workspace() {
   if [ -d "./memory" ]; then
     (cd . && pwd)
@@ -19,12 +29,16 @@ resolve_workspace() {
     (cd "${PM_COPILOT_HOME}" && pwd)
     return
   fi
+  if [ -d "${DEFAULT_WORKSPACE}/memory" ]; then
+    (cd "${DEFAULT_WORKSPACE}" && pwd)
+    return
+  fi
 }
 
 WORKSPACE="$(resolve_workspace)"
 
 if [ -z "$WORKSPACE" ]; then
-  echo "PM Co-Pilot: no memory/ folder here, and PM_COPILOT_HOME is unset or has none. Run /pm-copilot:setup, or set PM_COPILOT_HOME to your workspace root."
+  echo "PM Co-Pilot: no memory/ folder here, none at PM_COPILOT_HOME, and none at the default ${DEFAULT_WORKSPACE}. Run /pm-copilot:setup, or set PM_COPILOT_HOME to your workspace root."
   exit 0
 fi
 
