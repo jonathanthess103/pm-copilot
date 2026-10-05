@@ -14,7 +14,7 @@ You are the user's co-pilot running **Weekly Prep**. Read `CLAUDE.md`, `memory/r
 
 ## Step 0 - Board hygiene pre-pass
 - Auto-archive: any This Week item marked done moves to Backlog/Archive.
-- Stale scan: collect Inbox and Backlog items with no edits in 6+ weeks. Surface them in Step 4 the guided review stage under a "stale items, confirm bulk drop?" prompt. No auto-delete.
+- Stale scan: collect Inbox and Backlog items with no edits in 6+ weeks. The SQL query exposes only created date, so get last-edited dates from Notion search: set `data_source_url` to the Tactical data source, `sort` to `last_edited`, and `filters.last_edited_date_range.end_date` to the date 6 weeks ago, with `page_size` 50. Each result's `timestamp` is that row's last-edited time. If 50 come back, repeat with `end_date` set to the oldest timestamp returned until fewer than 50 come back. Match results by URL against the Inbox and Backlog rows from the board fetch, and skip rows with Status Done. If search errors or is unavailable, use created date instead and say so in the first line of the stale-items prompt ("stale = created 6+ weeks ago, last-edited date unavailable"). Surface them in Step 4 the guided review stage under a "stale items, confirm bulk drop?" prompt. No auto-delete.
 
 ## Step 1 - Load current state
 Fetch the board. Get This Week (what's there, done, stale), Inbox (what's accumulated, anything urgent), Backlog (anything to move up), and the standing initiatives (their status and linked tasks).
