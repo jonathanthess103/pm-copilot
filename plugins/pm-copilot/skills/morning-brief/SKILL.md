@@ -114,7 +114,7 @@ Rules: omit empty sections; never invent deadlines; captures name a source and l
 - Audit log: `memory/state/morning-brief-audit.md` - every auto-close/archive/dedup with item ID and evidence.
 - Reopen metric: a previously auto-closed item later reopened is logged as a reopen against that close (self-improvement reads this for the false-positive rate).
 - Open proposals: `memory/state/morning-brief-open-proposals.md` - unanswered "possibly done / promote?" items, re-surfaced next run, expired after ~5 runs.
-- High-water marks: `memory/state/morning-brief-hwm.json` - advance only sources that succeeded.
+- High-water marks: `memory/state/morning-brief-hwm.json` - advance only sources that succeeded. A mark is the timestamp of the newest item from that source actually processed this run, never the run time, and each source's mark is written separately, never in one bulk write at the end of the run.
 Create `memory/state/` if missing. All of Step 5 is silent housekeeping.
 
 <!-- loop test Tue Sep  8 09:42:43 PDT 2026 -->
