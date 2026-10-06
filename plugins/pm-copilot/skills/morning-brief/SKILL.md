@@ -40,7 +40,7 @@ Surface everything in this session. Never message the user on an external channe
 
 ## STEP 1 - Capture new items
 Pull new actionable items from each connected source since its high-water mark. Fault-isolate each; an unreachable source is reported and does not advance its clock.
-- **Meeting notes / transcripts (yesterday):** read the notes, extract the user's action items and clear follow-ups, drop generic attendees. Keep the full list of yesterday's meetings (title, one-line highlight, whether it produced action items) for the brief. Dedup by meeting ID plus meaning.
+- **Meeting notes / transcripts (since the high-water mark):** read the notes for every meeting since the mark, not only yesterday's, extract the user's action items and clear follow-ups, drop generic attendees. A day with no meetings does not skip this pull. Keep the full list of yesterday's meetings (title, one-line highlight, whether it produced action items) for the brief. Dedup by meeting ID plus meaning.
 - **Chat / messaging:** unanswered mentions of the user; DMs where the other person sent last; VIP messages not yet actioned (VIPs from `memory/day-to-day.md`). Dedup by message timestamp.
 - **Email:** new mail needing a response or action. Dedup by message ID.
 - **Capture channel:** read the channel named under "Capture channel" in `memory/day-to-day.md`, against its own high-water-mark key. Unlike every other chat source, **the user's own messages here are the signal**: this is where they forward or post things for the co-pilot to pick up, so the send-order rule that applies elsewhere is inverted here.
