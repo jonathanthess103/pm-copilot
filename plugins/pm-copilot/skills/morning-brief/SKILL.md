@@ -65,6 +65,7 @@ For every open task in Inbox and This Week, including ones captured this run:
 - Anchor every "after" comparison to the task's originating timestamp, not this run.
 - **Auto-close whitelist (Inbox rows only):** deterministic signals (an item saved then unsaved; an email read and filed out of inbox) and a couple of fuzzy signals the user has opted into (a matching outbound message after the origin; a matching calendar event in the right window). Each auto-close carries its evidence.
 - **Never auto-close** on a reply while the item is still flagged, on a shared doc, or on any other soft signal. If it looks done but isn't a clean signal, surface one "possibly done, confirm?" line.
+- A ticked checklist shows the stage it covers is done, not the card. Before proposing Done, identify which lifecycle stage the checked items belong to (for example, prep items on a pre-call card whose real deliverable, the recap and next steps, comes after the call).
 - This Week is propose-only even on a clean match.
 - Age-out: an Inbox row untouched for 14+ days with no completion signal and no future "check by" goes to Archive with an "aged-out" note.
 
