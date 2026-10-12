@@ -30,7 +30,7 @@ Two inputs, then one dedup gate. Do not skip 1B because 1A found something.
 
 **Dedup gate.** Key every candidate from both inputs on a stable artifact id (email thread id, chat channel plus message timestamp, file path). Drop any candidate whose key already appears in the queue file's **Reviewed** section. This is what stops an artifact reviewed in an earlier run coming back while the window still covers it.
 
-For each surviving diverged draft, diff it line by line against what was sent and extract concrete edit patterns (word choice, structure, cuts), not generic notes. Separate the user's style from the co-pilot's own mistakes: durable style goes to the voice file, while a rule or fact that already existed in memory and was not applied goes to the friction log under a voice heading. Propose everything; do not auto-write.
+For each surviving diverged draft, diff it line by line against what was sent and extract concrete edit patterns (word choice, structure, cuts), not generic notes. Separate the user's style from the co-pilot's own mistakes: durable style goes to the voice file, while a rule or fact that already existed in memory and was not applied goes to the friction log under a voice heading. Propose everything; do not auto-write. Voice-file patterns are approved in Part 1. Friction-log entries, including ones found in Phase 1, are shown and approved in Part 3.
 
 **Close the loop.** Once the user has decided on an item, move its row from **Pending** to **Reviewed** in the queue file, with the date reviewed and where its output landed. Never delete a Reviewed row; that list is the dedup key. Add a Reviewed row for any 1A item the user reviewed as well, so it cannot resurface.
 
@@ -53,7 +53,7 @@ Self-Improvement - [date]
 Draft-not-sent [ok/failed] · Skill-spotter [ok/failed] · Memory sweep [ok/failed] · Applier [ok/failed]
 
 Voice corrections (drafts that diverged / never sent)
-- [item] - [the divergence] - propose logging?
+- [item] - [the divergence] - propose voice.md pattern?
 
 New skill candidates
 - [name] - [what it'd automate] - build?
