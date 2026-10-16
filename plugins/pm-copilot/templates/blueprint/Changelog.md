@@ -9,7 +9,7 @@ One entry per Blueprint version, newest first. Holds every value that was overwr
 **Sources processed:**
 - {{source file}}
 
-**Changes**
+**Changes** (a value he edited before approving carries `edited (proposed: <Claude's value>)` in New value)
 
 | Section | Old value | New value | Cite |
 |---|---|---|---|

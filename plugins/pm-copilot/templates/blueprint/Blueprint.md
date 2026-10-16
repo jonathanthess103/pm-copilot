@@ -32,6 +32,7 @@ Each fact type has one home. Other sections link to it ("see People: <name>") an
 | 13 | Risks | The one risk register | Add, then close |
 | 14 | Timeline | Dated events | Append row |
 | 15 | Partner Context | Partners involved | Update in place; may stay empty |
+| 16 | Close-out | Outcome, close date, customer-stated reason, who won, re-engage trigger | Written once, at close-out |
 
 **Not stored here (other homes):** open tasks (Tactical), his read (Judgment.md), version history (Changelog.md), pending proposals (Proposals.md).
 
@@ -46,7 +47,7 @@ Each fact type has one home. Other sections link to it ("see People: <name>") an
 
 **Citation:** `[<source file> L<line>]` after each statement, e.g. `[2026-09-12_external-call_disco.md L142]`.
 
-**Markers:** `GAP:` not yet discovered. `(inferred)` Claude's read between the lines, not stated by the customer.
+**Markers:** `GAP:` not yet discovered. `(inferred)` Claude's read between the lines, not stated by the customer. `(prior opp)` carried from the account's previous opportunity, cited by relative path, until a source on this opp confirms it.
 
 ## 2. Deal Snapshot
 
@@ -218,3 +219,15 @@ Confirmed: the customer said it; cite the customer source. Suspected: his read, 
 | | | | |
 
 None recorded.
+
+## 16. Close-out
+
+Empty until the opportunity closes. His own read on why goes to Judgment.md.
+
+| Field | Value | Cite |
+|---|---|---|
+| Outcome (closed-won / closed-lost) | | |
+| Closed on | | |
+| Customer-stated reason | | |
+| Who won (see Competition) | | |
+| Re-engage trigger or date | | |
