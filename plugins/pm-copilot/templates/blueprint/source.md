@@ -2,7 +2,7 @@
 
 | Field | Value |
 |---|---|
-| Type | {{external-call / internal-call / phone-call / text / email / win-channel / dm / sfdc-snapshot / chat / doc / research}} |
+| Type | {{external-call / internal-call / phone-call / text / email / win-channel / dm / sfdc-snapshot / chat / doc / research / tactical}} |
 | Date and time | {{YYYY-MM-DD HH:MM, or a range for win-channel / dm}} |
 | Participants | |
 | Origin | {{Gong call ID / Slack channel and range / Gmail thread / original file path / session id}} |
