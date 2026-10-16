@@ -34,7 +34,7 @@ Newest first. The newest row of each type is that source's high-water mark.
 |---|---|---|---|
 | | | | |
 
-Types: `external-call`, `internal-call`, `phone-call`, `text`, `email`, `win-channel`, `dm`, `sfdc-snapshot`, `chat`, `doc`.
+Types: `external-call`, `internal-call`, `phone-call`, `text`, `email`, `win-channel`, `dm`, `sfdc-snapshot`, `chat`, `doc`, `research`.
 
 ## Other files in the deal folder
 
