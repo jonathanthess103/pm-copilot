@@ -104,7 +104,7 @@ A metric Claude suggests (not customer-stated) is marked `(suggested)`.
 
 ## 6. Evidence Logs
 
-Every log uses the same columns. Type is Stated, Observed or Confirmed.
+Every log uses the same columns. Type is Stated, Observed or Confirmed. In Quote or finding, a customer's verbatim words go in double quotes; text without quotes is a paraphrase.
 
 ### 6.1 Before
 

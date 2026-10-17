@@ -6,7 +6,7 @@ Versions of the master templates in this folder, newest first. The newest entry 
 
 **Files:** `Router.md`, `Judgment.md`, `Blueprint.md`, `Changelog.md`, `Proposals.md`, `source.md`
 
-**What changed:** initial templates.
+**What changed:** initial templates. Amended while v1 is open: verbatim-quote convention in Evidence Logs (`Blueprint.md`, section 6).
 
 **Migration:** none (first version).
 
