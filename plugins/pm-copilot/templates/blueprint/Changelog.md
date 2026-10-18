@@ -1,6 +1,6 @@
 # Changelog: {{account_name}} / {{opp_short_name}}
 
-One entry per Blueprint version, newest first. Holds every value that was overwritten or replaced, every `Judgment.md` bullet that was replaced, and every proposal he declined. When this file passes ~14 KB, the oldest entries move to `_archive/Changelog-<first date>_to_<last date>.md` in this opp folder. Nothing is deleted.
+One entry per Blueprint version, newest first. Holds every value that was overwritten or replaced, and every `Judgment.md` bullet that was replaced. Declined proposals live in `Declined.md`. When this file passes ~14 KB, the oldest entries move to `_archive/Changelog-<first date>_to_<last date>.md` in this opp folder. Nothing is deleted.
 
 ## v{{n}} ({{YYYY-MM-DD}})
 
@@ -20,12 +20,6 @@ One entry per Blueprint version, newest first. Holds every value that was overwr
 | Section | Old bullet | Replaced by |
 |---|---|---|
 | | | |
-
-**Declined**
-
-| Section | Proposed value | From source | Date declined |
-|---|---|---|---|
-| | | | |
 
 ---
 

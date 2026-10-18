@@ -1,21 +1,29 @@
 ---
 name: blueprint-voice
-description: Final check on anything a deal Blueprint skill writes before the user sees it or it is saved. Applies the user's voice rules for the audience, runs a deterministic lint for AI phrasing (banned words, antithesis and reversal tics, recap endings, throat-clearing, any em-dash), and for Blueprint entries checks that every statement carries a citation and uses only known labels. Called by Blueprint skills and by output skills that read from a Blueprint; not a rewrite-and-cut tool (that is the editor skill).
+description: Final check on drafts a deal Blueprint skill produces, run only where it matters. Drafts that go out under the user's name (email, Slack, doc) get the user's voice rules and a deterministic lint for AI phrasing (banned words, antithesis and reversal tics, recap endings, throat-clearing, any em-dash). Rows going into Blueprint.md or Judgment.md get a citation and label check only. Nothing else is checked. Called by Blueprint skills and by output skills that read from a Blueprint; not a rewrite-and-cut tool (that is the editor skill).
 ---
 
 # Blueprint Voice
 
 **Purpose:** clean a draft without changing its facts, citations, numbers, structure or length. Runs automatically; the user does not call it.
 
-**Inputs:** the draft; output type (`email`, `slack-win-channel`, `slack-dm`, `doc`, `blueprint-entry`); audience; for `blueprint-entry`, the section each row belongs to.
+**Scope (Template edits 32)**
+
+| Draft | Check |
+|---|---|
+| Goes out under the user's name: `email`, `slack-win-channel`, `slack-dm`, `doc` | Voice rules and the style lint |
+| `blueprint-entry`: rows going into `Blueprint.md` or `Judgment.md` | Citation and label check only, no style lint |
+| Anything else: `Changelog.md`, `Proposals.md`, `Declined.md`, roadmap rows, source files, chat messages to the user | Not checked. Callers don't send these |
+
+**Inputs:** the draft; output type (`email`, `slack-win-channel`, `slack-dm`, `doc`, `blueprint-entry`); audience; for `blueprint-entry`, the section each row belongs to and its target file (`Blueprint.md` or `Judgment.md`).
 
 **Steps**
 
 | # | Step |
 |---|---|
 | 1 | Human-facing types: load `memory/voice.md` and check the draft against the Per audience bullet for this audience. Fix wording only; report a structural mismatch (order, layout, salutation) to the calling skill, which owns the draft's structure |
-| 2 | Write the draft to a temp file and run the lint script below on it |
-| 3 | `blueprint-entry`: put each section's table header and separator rows, copied from the file the rows will be written to (that deal's `Blueprint.md`, `Judgment.md` or `Changelog.md`), above that section's rows, then run the script with `--entry`. It checks the Cite cell of every row in a table whose header has a Cite column (Mantra, MEDDPICC and Discovery Gaps have none and are not citation-checked), that every bullet line ends in a `[<file> L<n>]` citation, and that every label is a known one |
+| 2 | Write the draft to a temp file in the system temp folder and run the lint script below on it (style lint for the human-facing types) |
+| 3 | `blueprint-entry`: put each section's table header and separator rows, copied from the file the rows will be written to (that deal's `Blueprint.md` or `Judgment.md`), above that section's rows, then run the script with `--entry` (citation and label check only; the style lint is skipped). It checks the Cite cell of every row in a table whose header has a Cite column (Mantra, MEDDPICC and Discovery Gaps have none and are not citation-checked), that every bullet line ends in a `[<file> L<n>]` citation, and that every label is a known one |
 | 4 | Any wording hit: rewrite once, keeping facts, citations and numbers, then re-run. Missing citation, unknown label and missing header hits are never rewritten: stop and show them. Still failing: stop and show the draft with `<<< HIT: <reason>` at the end of each failing line |
 | 5 | Pass: return the clean draft. Lint output never appears in the deliverable |
 
@@ -53,7 +61,7 @@ checks = {
  "em-dash": "—",
 }
 hits = []
-for name, pat in checks.items():
+for name, pat in (checks.items() if not entry else []):  # entry rows: citation and label check only
     for m in re.finditer(pat, scan, I):
         line = scan.count("\n", 0, m.start()) + 1
         hits.append(f"L{line} {name}: {m.group(0)!r}")

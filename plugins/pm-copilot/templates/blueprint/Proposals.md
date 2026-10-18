@@ -1,6 +1,6 @@
 # Proposals: {{account_name}} / {{opp_short_name}}
 
-Proposed updates waiting for his approval. Items are numbered fresh each time the list is shown. Answered items leave this file: applied ones go to their target, declined ones go to Changelog.md. CONFLICT and Judgment.md items always need an explicit answer.
+Proposed updates waiting for his approval. Items are numbered fresh each time the list is shown. Answered items leave this file: applied ones go to their target, declined ones go to Declined.md. CONFLICT and Judgment.md items always need an explicit answer.
 
 **Queued:** 0
 

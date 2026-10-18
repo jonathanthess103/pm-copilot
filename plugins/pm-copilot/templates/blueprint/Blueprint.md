@@ -47,7 +47,7 @@ Each fact type has one home. Other sections link to it ("see People: <name>") an
 
 **Citation:** `[<source file> L<line>]` after each statement, e.g. `[2026-09-12_external-call_disco.md L142]`.
 
-**Markers:** `GAP:` not yet discovered. `(inferred)` Claude's read between the lines, not stated by the customer. `(prior opp)` carried from the account's previous opportunity, cited by relative path, until a source on this opp confirms it.
+**Markers:** `GAP:` not yet discovered. `(inferred)` Claude's read between the lines, not stated by the customer. `(his read)` his own read, stated by him, not by the customer. `(prior opp)` carried from the account's previous opportunity, cited by relative path, until a source on this opp confirms it.
 
 ## 2. Deal Snapshot
 

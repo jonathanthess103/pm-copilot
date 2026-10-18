@@ -14,4 +14,4 @@ Write-once. Never edited after this date; new material goes in a new file.
 
 ## Text
 
-{{Full text. Transcripts: one utterance per line, `Speaker: text`. Slack, DM and text: one message per line, `[YYYY-MM-DD HH:MM] Sender: text`. Email: `### [YYYY-MM-DD HH:MM] Sender` per message, then one paragraph per line. Docs and notes: one paragraph per line. Chat: his words verbatim.}}
+{{Full text. Transcripts: one utterance per line, `Speaker: text`. Slack, DM and text: one message per line, `[YYYY-MM-DD HH:MM] Sender: text`. Email: `### [YYYY-MM-DD HH:MM] Sender` per message, then one paragraph per line. Docs and notes: one paragraph per line. Chat: the user's words verbatim. A call-analysis session keeps both sides word for word: each Claude message copied exactly as one block under a `Claude:` line, tables included; each line from the user one `<user's first name>:` line; a quote the user replies to on its own `<user's first name> (quoting):` line.}}

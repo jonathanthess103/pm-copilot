@@ -25,6 +25,7 @@ Confirmed: the date he confirmed the value at creation.
 - [Judgment.md](Judgment.md): his read
 - [Changelog.md](Changelog.md): versions and change notes
 - [Proposals.md](Proposals.md): proposed updates waiting for his approval
+- [Declined.md](Declined.md): proposals he declined, checked before proposing again
 
 ## Source roadmap
 
