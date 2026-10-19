@@ -45,7 +45,7 @@ Read every `open` entry in `memory/skill-improvements.md`, including any just pr
 
 **Drafted scores are never final.** When a project, build or improvement is written into the user's own prioritization system with priority scores the co-pilot drafted rather than the user set, say so on the row and end the run by naming every row that still needs their review. Use whatever "reviewed by the user" flag that system carries; if it has none, propose adding one before writing. Never leave a co-pilot-drafted score sitting in the user's store indistinguishable from one they set themselves: the store then ranks on numbers they never agreed to, and the ranking looks like their judgement. Leaving the scores blank is not the alternative, because an unscored row sorts to the bottom and goes unseen.
 
-Also run the **weekly memory consolidation** step here: a reflective pass over the memory files to merge duplicates, retire stale entries, fix the index, and run its Prune and nest scan. Present prune and nest proposals as their own part of the output. Propose the changes; write only on approval. (If a separate consolidation task is scheduled, it runs the same Prune and nest scan; skip it here.)
+Also run the **weekly memory consolidation** step here by invoking the `consolidate` skill (`pm-copilot:consolidate`) with the Skill tool. Do not re-describe or partly re-run it from this file. Present its prune and nest proposals as their own part of the output. It proposes only; write on approval. (If a separate consolidation task is scheduled, skip it here.)
 
 ## OUTPUT - walked through one part at a time
 ```
