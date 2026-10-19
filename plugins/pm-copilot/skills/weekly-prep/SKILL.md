@@ -20,7 +20,7 @@ You are the user's co-pilot running **Weekly Prep**. Read `CLAUDE.md`, `memory/r
 Fetch the board. Get This Week (what's there, done, stale), Inbox (what's accumulated, anything urgent), Backlog (anything to move up), and the standing initiatives (their status and linked tasks).
 
 ## Step 2 - Pull from all sources
-Search each connected source for new actionable items or signals since last week, using the tools in `memory/day-to-day.md`:
+Search each connected source for new actionable items or signals since last week, using the tools in `memory/day-to-day.md`. Read each source back to last week's start, not to its first page (Coverage, `CLAUDE.md` check 1):
 - **Chat / messaging:** the user's mentions (exclude threads they already replied to), unanswered DMs, messages from VIPs.
 - **Email:** anything in the inbox is a potential task.
 - **Calendar (coming week):** meetings that need prep; new or one-off high-stakes meetings. For each, note the likely prep. Cross-check any recurring "planning"-type holds against what the user actually told you about their planning calendar, so stale or moved holds are not treated as live deadlines.
@@ -31,6 +31,8 @@ Search each connected source for new actionable items or signals since last week
 Before proposing to promote any Inbox item to This Week, verify it is actually still open. Board status alone is not enough; people close work in chat and email faster than on the board. Run a targeted last-48h check across the relevant chat channels, email sent, and any linked updates. If there's a completion signal, leave it in Inbox and note "appears resolved in [source], leaving for confirmation." Do not auto-close or promote.
 
 Granularity filter: promote only chunky, recognizable units of work. Do not promote small or granular items (single-message replies, one-off acknowledgements, sub-step reminders, things answerable in a couple minutes). Granular items stay in Inbox or go to the stale/bulk-drop list. When unsure, leave it in Inbox and mention it.
+
+Before proposing any "add a row", match against open rows by deal and by deadline date, not only by title. If a nearby row could plausibly be the work, ask instead of asserting a gap. Do not propose a row for work that a named existing row already carries (see the lane notes in `memory/goals.md`). Do not raise an internal inconsistency in a card he owns unless he asks.
 
 ## Step 2.6 - Tiered meeting prep (compute now, present in the guided review within step 4)
 Read `memory/meeting-prep-recurring.md` for known tier assignments. For each coming-week meeting that needs prep, assign one tier:
