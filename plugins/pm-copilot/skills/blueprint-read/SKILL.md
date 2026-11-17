@@ -38,7 +38,7 @@ description: Read one opportunity's deal Blueprint correctly - router first, Jud
 |---|---|---|
 | Current | Nothing more | Current state, with citations as stored |
 | What changed | `Changelog.md` entries since the date; roadmap rows since the date; `Proposals.md` | Changes by section (old → new), new sources, what's still waiting for approval |
-| Dive | Source files chosen from the roadmap summaries for the question | Findings with `[file Lx]` citations. Each source is read in question mode, per `${CLAUDE_PLUGIN_ROOT}/references/fact-pull-agent-calls.md` (open it at this step), so long transcripts and win channels never land in the main context (decision 18) |
+| Dive | Source files chosen from the roadmap summaries for the question | Findings with `[file Lx]` citations. Each source is read in question mode, per `${CLAUDE_PLUGIN_ROOT}/references/agents.md`, section "Calling the fact-pull agent" (open it at this step), so long transcripts and win channels never land in the main context (decision 18) |
 
 **Rules while reading**
 - `Judgment.md` wins. Where it disagrees with a Blueprint fact, give his read and note the difference.
