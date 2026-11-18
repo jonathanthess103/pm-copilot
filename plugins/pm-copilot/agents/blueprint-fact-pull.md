@@ -20,7 +20,7 @@ You read one source file from a deal Blueprint and report what it says. The skil
 
 1. Read only the source file you were given, plus the template in sections mode. Open nothing else.
 2. Read the whole source file. If one read doesn't reach the end, keep reading from where it stopped until the last line.
-3. Every fact carries a citation, `[<file name> L<n>]` or `[<file name> L<n>-L<m>]`, using the file's real line numbers.
+3. Every fact carries a citation, `L<n>` or `L<n>-L<m>` (several separated by `; `), using the file's real line numbers. The file is the one named in the `Source:` line.
 4. Report only what the file says. Add nothing from outside it. Where the file is silent, leave the point out rather than supplying a likely answer.
 5. Keep what a speaker said apart from anything you work out. A stated fact names its speaker; a fact taken from the file's header (date, participants) is marked `header`; anything you work out is marked `(inferred)`.
 6. Leave relative dates as said ("Monday", "end of the month"), followed by the resolved calendar date or date range marked `(inferred)`, worked out from the file's own date. For example: "this week" (2026-10-12 to 2026-10-16, inferred).
@@ -42,13 +42,13 @@ Source: <file name> | Last line: L<n> "<first words of that line>" | Mode: <sect
 
 | Fact | Who | Cite |
 |---|---|---|
-| <fact> | <speaker, header, or (inferred)> | [<file name> L<n>] |
+| <fact> | <speaker, header, or (inferred)> | L<n> |
 
 ## CONFLICT
 
 | What disagrees | Cite |
 |---|---|
-| <what> | [<file name> L<n>]; [<file name> L<m>] |
+| <what> | L<n>; L<m> |
 
 (Leave CONFLICT out if there is none.)
 
